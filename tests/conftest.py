@@ -57,3 +57,9 @@ def category_2():
         }
         ]
     )
+
+
+@pytest.fixture(autouse=True)
+def nullify_category_counters():
+    Category.category_count = 0
+    Category.product_count = 0
