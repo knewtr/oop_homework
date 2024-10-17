@@ -1,4 +1,3 @@
-
 class Category:
     name: str
     description: str
@@ -13,22 +12,32 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.product_count} шт."
+
     @property
     def products(self):
         product_str = ""
         for product in self.__products:
-            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+            product_str += f"{str(product)}\n"
         return product_str
 
     def add_product(self, product):
         self.__products.append(product)
         return self.__products
 
+    @classmethod
+    def get_full_amount(cls, products):
+        for product in products:
+            product_amount = 0
+            product_amount += product.product_count
+            return product_amount
+
 
 # if __name__ == '__main__':
 #     category = Category('Смартфоны', 'Samsung Galaxy C23 Ultra', ['product_1', 'product_2'])
-#     print(category.name)
-#     print(category.description)
+#     # print(category.name)
+#     # print(category.description)
 #     print(category.products)
 #     print(category.category_count)
 #     print(category.product_count)
