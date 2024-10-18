@@ -22,6 +22,10 @@ class Category:
             product_str += f"{str(product)}\n"
         return product_str
 
+    @property
+    def product_list(self):
+        return self.__products
+
     def add_product(self, product):
         self.__products.append(product)
         return self.__products

@@ -1,4 +1,8 @@
-from tests.conftest import category_1, category_2
+from itertools import product
+
+import pytest
+
+from tests.conftest import category_1, category_2, products_iterator
 
 
 def test_category(category_1):
@@ -23,3 +27,13 @@ def test_add_product(category_1, category_2, new_product):
 
 def test_str_category(category_1):
     assert str(category_1) == "Смартфоны, количество продуктов: 3 шт."
+
+
+def test_iterator(products_iterator):
+    iter(products_iterator)
+    assert products_iterator.index == 0
+    assert next(products_iterator).name == "Samsung Galaxy C23 Ultra"
+    assert next(products_iterator).name == "Iphone 15"
+    assert next(products_iterator).name == "Xiaomi Redmi Note 11"
+    with pytest.raises(StopIteration):
+        next(products_iterator)

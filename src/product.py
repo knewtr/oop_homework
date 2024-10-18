@@ -1,6 +1,3 @@
-from itertools import product
-
-
 class Product:
     name: str
     description: str
