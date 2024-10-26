@@ -14,7 +14,9 @@ class Product:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        if type(self) == type(other):
+            return (self.__price * self.quantity) + (other.__price * other.quantity)
+        raise TypeError
 
     @property
     def price(self):
@@ -49,14 +51,7 @@ class Product:
 
 
 # if __name__ == '__main__':
-#     product = Product('Samsung A23', 'Новый телефон', 25000.00, 1)
-#     print(product)
-
-# if __name__ == "__main__":
-#     product = Product(
-#         name="Samsung Galaxy C23 Ultra", description="256GB, Серый цвет, 200MP камера", price=180000.0, quantity=5
-#     )
-#     print(f"Начальная цена: {product.price}")
-#     new_price = 1000.0
-#     product.price = new_price
-#     print(f"Конечная цена: {product.price}")
+#
+#     product1 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+#     product2 = LawnGrass('Grass', 'Nice one', 150, 1, 'Russia', 15, 'grass green')
+#     print(product1 + product2)

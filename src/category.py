@@ -1,3 +1,6 @@
+from src.product import Product
+
+
 class Category:
     name: str
     description: str
@@ -30,8 +33,11 @@ class Category:
         return self.__products
 
     def add_product(self, product):
-        self.__products.append(product)
-        return self.__products
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
 
     @classmethod
     def get_full_amount(cls, products):
@@ -39,12 +45,3 @@ class Category:
             product_amount = 0
             product_amount += product.product_count
             return product_amount
-
-
-# if __name__ == '__main__':
-#     category = Category('Смартфоны', 'Samsung Galaxy C23 Ultra', ['product_1', 'product_2'])
-#     # print(category.name)
-#     # print(category.description)
-#     print(category.products)
-#     print(category.category_count)
-#     print(category.product_count)
