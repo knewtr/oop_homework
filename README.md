@@ -35,6 +35,7 @@ from your_module import main
 Создан класс Product.
 Создан дочерний класс Smartphone класса Product.
 Создан дочерний класс LawnGrass класса Product.
+Создан базовый абстрактный класс BaseOrder.
 Создан класс Category.
 Создан класс Order.
 В модуле utils.py реализованы функция чтения json-файла и создания объектов классов.
