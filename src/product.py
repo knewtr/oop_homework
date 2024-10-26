@@ -1,4 +1,9 @@
-class Product:
+from src.base_order import BaseOrder
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(BaseProduct, PrintMixin):
     name: str
     description: str
     price: float
@@ -9,6 +14,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
@@ -49,9 +55,11 @@ class Product:
         products.append(new_product)
         return Product(**new_product_dict)
 
+    def get_order_info(self):
+        return f"Наименование: {self.name}, Количество: {self.quantity}, Цена: {self.price}"
+
 
 # if __name__ == '__main__':
 #
 #     product1 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-#     product2 = LawnGrass('Grass', 'Nice one', 150, 1, 'Russia', 15, 'grass green')
-#     print(product1 + product2)
+#     print(product1)
