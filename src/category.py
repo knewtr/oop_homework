@@ -1,7 +1,8 @@
+from src.base_order import BaseOrder
 from src.product import Product
 
 
-class Category:
+class Category(BaseOrder):
     name: str
     description: str
     products: list[dict]
@@ -45,3 +46,6 @@ class Category:
             product_amount = 0
             product_amount += product.product_count
             return product_amount
+
+    def get_order_info(self):
+        return Product.get_order_info()
