@@ -45,3 +45,8 @@ def test_product_str(product_test):
 
 def test_add_product(category_1):
     assert 2580000.0
+
+
+def test_product_zero_quantity():
+    with pytest.raises(ValueError):
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)

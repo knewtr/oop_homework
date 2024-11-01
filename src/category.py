@@ -49,3 +49,11 @@ class Category(BaseOrder):
 
     def get_order_info(self):
         return Product.get_order_info()
+
+    def middle_price(self):
+        if not self.__products:
+            return 0
+        try:
+            return round(sum([product.price for product in self.__products]) / len(self.__products))
+        except ZeroDivisionError:
+            return 0
