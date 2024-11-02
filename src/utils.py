@@ -22,10 +22,3 @@ def create_objs_from_json(data):
         categories.append(Category(**category))
 
     return categories
-
-
-# if __name__ == '__main__':
-#     raw_data = read_json('../data/products.json')
-#     data = create_objs_from_json(raw_data)
-#     print(data[0].name)
-#     print(data[1].name)
