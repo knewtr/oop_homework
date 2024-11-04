@@ -40,12 +40,11 @@ class Category(BaseOrder):
         else:
             raise TypeError
 
-    @classmethod
-    def get_full_amount(cls, products):
-        for product in products:
-            product_amount = 0
-            product_amount += product.product_count
-            return product_amount
-
     def get_order_info(self):
-        return Product.get_order_info()
+        return f"Наименование: {Product.name}, Количество: {Product.quantity}, Цена: {Product.price}"
+
+    def middle_price(self):
+        if not self.__products:
+            return 0
+        else:
+            return round(sum([product.price for product in self.__products]) / len(self.__products))

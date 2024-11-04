@@ -13,7 +13,7 @@ class Order(Product, BaseOrder):
         return self.quantity * self.product.price
 
     def get_order_info(self):
-        return f"Наименование: {self.product.name}, Количество: {self.quantity}, Общая стоимость: {self.total_price} "
+        return f"Наименование: {self.product.name}, Количество: {self.quantity}, Общая стоимость: {self.total_price}"
 
 
 # if __name__ == '__main__':
